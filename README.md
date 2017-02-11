@@ -1,5 +1,6 @@
 Ansible role: PHP-FPM
 ===================
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-lukasz--zaroda.php--fpm-000000.svg)](https://galaxy.ansible.com/lukasz-zaroda/php-fpm/)
 
 PHP-FPM installation, configuration, and easy pool management for both PHP 5 and PHP 7 versions.
 
