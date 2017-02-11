@@ -1,0 +1,11 @@
+#jinja2: trim_blocks: "true", lstrip_blocks: "true"
+{% for pool_name in php_pools_merged %}
+[{{pool_name}}]
+
+listen = /var/run/php-fpm.{{pool_name}}.sock
+{%   for option in php_pools_merged[pool_name] %}
+{{     option }} = {{ php_pools_merged[pool_name][option] }}
+{%   endfor %}
+
+
+{%   endfor %}

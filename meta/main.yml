@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Łukasz Zaroda
+  company: Luken-Tech
+  description: "PHP-FPM installation, configuration, and easy pool management for both PHP 5 and PHP 7 versions."
+  min_ansible_version: 2.2
+  license: MIT
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+  categories:
+  - system
+
+dependencies: []

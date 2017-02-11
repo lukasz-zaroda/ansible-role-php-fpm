@@ -1,0 +1,45 @@
+---
+
+# Core settings for php pools.
+php_pools_core_defaults:
+  listen.owner: www-data
+  listen.group: www-data
+  pm: dynamic
+  pm.max_children: 5
+  pm.start_servers: 2
+  pm.min_spare_servers: 1
+  pm.max_spare_servers: 3
+  chdir: /
+
+# PHP packages that will be installed.
+php_packages: [php5, php7.0, php5-fpm, php7.0-fpm, php5-mysqlnd, php7.0-mysqlnd]
+
+# Names of the FPM daemons for both PHP versions.
+php_fpm_daemons:
+  5: php5-fpm
+  7: php7.0-fpm
+
+# Paths to the directories with pools configuration for both PHP versions.
+php_fpm_pools_paths:
+  5: /etc/php5/fpm/pool.d
+  7: /etc/php/7.0/fpm/pool.d
+
+# Custom default pools settings. Will be used with every pool.
+php_pools_defaults: {}
+
+# In this variable pools for PHP 5 and PHP 7 should be defined. Example:
+#  php_pools:
+#    5:
+#      example1.com:
+#        user: example1
+#        group: example1
+#    7:
+#      example2.com:
+#        user: example2
+#        group: example2
+#      example3.com:
+#        user: example3
+#        group: example3
+php_pools:
+  5: {}
+  7: {}

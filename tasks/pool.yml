@@ -1,0 +1,17 @@
+---
+- include: merger.yml
+  vars:
+    _php_merger_return: "php_pools_merged"
+    _php_merger_dict: "{{_pool_item.value}}"
+    _php_merger_defaults: "{{php_pools_defaults}}"
+    _php_merger_core_defaults: "{{php_pools_core_defaults}}"
+
+- name: PHP {{_pool_item.key}} pools are configured.
+  template:
+    src: pool.conf.j2
+    dest: "{{php_fpm_pools_paths[_pool_item.key|int]}}/ansible.conf"
+    owner: root
+    group: root
+    mode: 0664
+  with_dict: "{{php_pools_merged}}"
+  notify: restart PHP {{_pool_item.key}} FPM

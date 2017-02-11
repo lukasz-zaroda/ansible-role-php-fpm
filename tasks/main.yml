@@ -1,0 +1,24 @@
+---
+- name: PHP is installed.
+  package: name={{item}} state=installed
+  with_items: "{{php_packages}}"
+
+- name: PHP FPM daemons are running.
+  systemd: name={{item.value}}
+           state=started
+           enabled=yes
+  with_dict: "{{php_fpm_daemons}}"
+
+- name: DotDeb repository is added.
+  apt_repository: repo='{{item}}'
+  with_items:
+    - deb http://packages.dotdeb.org stable all
+    - deb-src http://packages.dotdeb.org stable all
+
+- name: DotDeb key is added.
+  apt_key: url=http://www.dotdeb.org/dotdeb.gpg
+
+- include: pool.yml
+  loop_control:
+    loop_var: _pool_item
+  with_dict: "{{php_pools}}"

@@ -1,0 +1,6 @@
+---
+- name: restart PHP 5 FPM
+  systemd: name={{php_fpm_daemons.5}} state=restarted
+
+- name: restart PHP 7 FPM
+  systemd: name={{php_fpm_daemons.7}} state=restarted
